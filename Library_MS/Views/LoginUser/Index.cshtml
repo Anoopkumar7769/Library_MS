@@ -1,0 +1,74 @@
+﻿@model Library_MS.Models.loginuser
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User Login</title>
+    <style>
+        #login-div{
+            position:absolute;
+                left:500px;
+                top:150px;
+                border:1px solid #ccc;
+                padding:20px 20px;
+        }
+        .field-validation-error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("Authorise", "LoginUser", FormMethod.Post))
+        {
+            <h2>Library Management System</h2>
+            <table>
+
+                @*<tr>
+                    <td></td>
+                    <td style="text-decoration:underline">Library Management System</td>
+                </tr>*@
+
+                <tr>
+                    <td>@Html.LabelFor(model => model.UserName)</td>
+                    <td>@Html.EditorFor(model => model.UserName)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password)</td>
+                    <td>@Html.EditorFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Login" />
+                        <input type="submit" value="Reset" />
+                    </td>
+                </tr>
+
+
+            </table>
+        }
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+</body>
+</html>
